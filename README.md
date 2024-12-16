@@ -29,10 +29,11 @@ Process test data as follows:
 - Compute rolling window statistics (mean, variance, slope) for each data point.
 - Segment the test data and normalize the last segment.
 - Assign the last segment to its corresponding cluster for each selected feature.
+
 Generate predictions:
-- For each test data point, use the three clusters it is assigned to (one per feature).
-- Predict RUL using the corresponding regression models for the clusters.
+- For a test data point, use the three clusters it is assigned to (one per feature) to predict RUL, using the corresponding regression models for the clusters.
 - Compute a weighted average of the predictions, where the weights are calculated based on the R^2 value of each regression model (indicating model performance), and the number of observations in the cluster (indicating model reliability).
+- If we're inputing a whole testing dataset, for each given unit, we use a simpleExpSmoothing on the final prediction.
 
 
 ## Performance 
